@@ -94,6 +94,13 @@ export default function AdminOperationDetail() {
               </p>
             </div>
 
+            <a
+              href="/admin/operations/1/offers"
+              className="mt-6 inline-flex w-full justify-center rounded-full border border-[#008B7A] px-6 py-3 font-bold text-[#008B7A] transition hover:bg-[#008B7A] hover:text-white"
+            >
+              Gestionar ofertas hipotecarias
+            </a>
+
             <div className="mt-6 rounded-3xl border border-slate-100 p-5">
               <p className="mb-4 text-sm font-bold text-slate-500">
                 Cambiar estado
