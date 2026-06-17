@@ -35,10 +35,10 @@ export default function Home() {
             </Link>
           </nav>
 
-          <div className="hidden items-center gap-4 sm:flex">
+          <div className="flex items-center gap-3 sm:gap-4">
             <Link
               href="/login"
-              className="text-sm font-semibold text-brand-deep transition hover:text-brand-accent"
+              className="hidden text-sm font-semibold text-brand-deep transition hover:text-brand-accent sm:inline"
             >
               Acceder
             </Link>
