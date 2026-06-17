@@ -1,26 +1,22 @@
+import Button from "@/components/Button";
+import Card from "@/components/Card";
+import Header from "@/components/Header";
+
 export default function NewOperationPage() {
   return (
-    <main className="min-h-screen bg-[#F7FAF8] text-[#0B1736]">
+    <main className="min-h-screen bg-surface text-ink">
       <section className="mx-auto max-w-5xl px-6 py-8">
-        <header className="mb-10 flex items-center justify-between">
-          <a href="/admin/dashboard">
-            <img
-              src="/fixers-logo.png"
-              alt="Fixers Finance"
-              className="h-12 w-auto"
-            />
-          </a>
-
-          <a
-            href="/admin/dashboard"
-            className="rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-bold text-[#073F3A] transition hover:border-[#008B7A] hover:text-[#008B7A]"
-          >
-            Volver al panel
-          </a>
-        </header>
+        <Header
+          logoHref="/admin/dashboard"
+          right={
+            <Button href="/admin/dashboard" variant="ghost" size="sm">
+              Volver al panel
+            </Button>
+          }
+        />
 
         <div className="mb-8">
-          <p className="mb-2 text-sm font-bold uppercase tracking-wide text-[#008B7A]">
+          <p className="mb-2 text-sm font-bold uppercase tracking-wide text-brand-accent">
             Nueva operación
           </p>
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
@@ -32,7 +28,7 @@ export default function NewOperationPage() {
           </p>
         </div>
 
-        <div className="rounded-[2rem] bg-white p-8 shadow-xl shadow-slate-900/5">
+        <Card className="p-8">
           <form className="space-y-8">
             <div>
               <h2 className="mb-5 text-2xl font-bold">Datos del cliente</h2>
@@ -44,7 +40,7 @@ export default function NewOperationPage() {
                   </label>
                   <input
                     placeholder="Marta García"
-                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
                   />
                 </div>
 
@@ -55,7 +51,7 @@ export default function NewOperationPage() {
                   <input
                     type="email"
                     placeholder="cliente@email.com"
-                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
                   />
                 </div>
 
@@ -65,7 +61,7 @@ export default function NewOperationPage() {
                   </label>
                   <input
                     placeholder="+34 600 000 000"
-                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
                   />
                 </div>
 
@@ -73,7 +69,7 @@ export default function NewOperationPage() {
                   <label className="mb-2 block text-sm font-bold text-slate-700">
                     Asesor asignado
                   </label>
-                  <select className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]">
+                  <select className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent">
                     <option>Carlos López</option>
                     <option>Ana Ruiz</option>
                     <option>María Torres</option>
@@ -90,7 +86,7 @@ export default function NewOperationPage() {
                   <label className="mb-2 block text-sm font-bold text-slate-700">
                     Tipo de operación
                   </label>
-                  <select className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]">
+                  <select className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent">
                     <option>Compra vivienda habitual</option>
                     <option>Cambio de hipoteca</option>
                     <option>Compra segunda vivienda</option>
@@ -104,7 +100,7 @@ export default function NewOperationPage() {
                   </label>
                   <input
                     placeholder="240.000 €"
-                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
                   />
                 </div>
 
@@ -114,7 +110,7 @@ export default function NewOperationPage() {
                   </label>
                   <input
                     placeholder="Madrid"
-                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
                   />
                 </div>
 
@@ -122,7 +118,7 @@ export default function NewOperationPage() {
                   <label className="mb-2 block text-sm font-bold text-slate-700">
                     Estado inicial
                   </label>
-                  <select className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]">
+                  <select className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent">
                     <option>Consulta inicial</option>
                     <option>Documentación pendiente</option>
                     <option>Estudio financiero</option>
@@ -137,35 +133,30 @@ export default function NewOperationPage() {
               <textarea
                 rows={4}
                 placeholder="Estamos revisando tu caso y pronto te indicaremos la documentación necesaria."
-                className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
               />
             </div>
 
-            <div className="rounded-3xl bg-[#F7FAF8] p-5">
-              <p className="font-bold text-[#073F3A]">Nota importante</p>
+            <div className="rounded-3xl bg-surface p-5">
+              <p className="font-bold text-brand-deep">Nota importante</p>
               <p className="mt-2 leading-7 text-slate-600">
-                Esta pantalla todavía es visual. Más adelante conectaremos este
-                formulario con Supabase para guardar clientes y operaciones reales.
+                Esta versión es una demostración funcional del flujo. En la
+                versión final, este formulario guardará clientes y operaciones
+                reales de forma segura.
               </p>
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row">
-              <a
-                href="/admin/operations/1"
-                className="rounded-full bg-[#008B7A] px-7 py-4 text-center font-bold text-white transition hover:bg-[#073F3A]"
-              >
-                Crear operación demo
-              </a>
+              <Button href="/admin/operations/1" size="lg">
+                Crear operación
+              </Button>
 
-              <a
-                href="/admin/dashboard"
-                className="rounded-full border border-slate-200 px-7 py-4 text-center font-bold text-[#073F3A] transition hover:border-[#008B7A] hover:text-[#008B7A]"
-              >
+              <Button href="/admin/dashboard" variant="ghost" size="lg">
                 Cancelar
-              </a>
+              </Button>
             </div>
           </form>
-        </div>
+        </Card>
       </section>
     </main>
   );

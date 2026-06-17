@@ -1,3 +1,8 @@
+import Badge from "@/components/Badge";
+import Button from "@/components/Button";
+import Card from "@/components/Card";
+import Header from "@/components/Header";
+
 const messages = [
   {
     sender: "Carlos López",
@@ -24,27 +29,19 @@ const messages = [
 
 export default function ClientMessagesPage() {
   return (
-    <main className="min-h-screen bg-white text-[#0B1736]">
+    <main className="min-h-screen bg-white text-ink">
       <section className="mx-auto max-w-5xl px-6 py-8">
-        <header className="mb-10 flex items-center justify-between">
-          <a href="/client/dashboard">
-            <img
-              src="/fixers-logo.png"
-              alt="Fixers Finance"
-              className="h-12 w-auto"
-            />
-          </a>
+        <Header
+          logoHref="/client/dashboard"
+          right={
+            <Button href="/client/operations/1" variant="ghost" size="sm">
+              Volver a la operación
+            </Button>
+          }
+        />
 
-          <a
-            href="/client/operations/1"
-            className="rounded-full border border-slate-200 px-5 py-2 text-sm font-bold text-[#073F3A] transition hover:border-[#008B7A] hover:text-[#008B7A]"
-          >
-            Volver a la operación
-          </a>
-        </header>
-
-        <div className="mb-8 rounded-[2rem] bg-[#F7FAF8] p-8">
-          <p className="mb-2 text-sm font-bold uppercase tracking-wide text-[#008B7A]">
+        <div className="mb-8 rounded-[2rem] bg-surface p-8">
+          <p className="mb-2 text-sm font-bold uppercase tracking-wide text-brand-accent">
             Mensajes
           </p>
 
@@ -59,8 +56,8 @@ export default function ClientMessagesPage() {
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[1fr_0.65fr]">
-          <div className="rounded-[2rem] border border-slate-100 bg-white p-7 shadow-xl shadow-slate-900/5">
-            <div className="mb-6 flex items-center justify-between">
+          <Card>
+            <div className="mb-6 flex items-center justify-between gap-4">
               <div>
                 <h2 className="text-2xl font-bold">Conversación</h2>
                 <p className="mt-1 text-slate-500">
@@ -68,9 +65,7 @@ export default function ClientMessagesPage() {
                 </p>
               </div>
 
-              <span className="rounded-full bg-[#E9FFF6] px-4 py-2 text-sm font-bold text-[#008B7A]">
-                Carlos López
-              </span>
+              <Badge size="md">Carlos López</Badge>
             </div>
 
             <div className="space-y-5">
@@ -80,13 +75,15 @@ export default function ClientMessagesPage() {
                 return (
                   <div
                     key={message.text}
-                    className={`flex ${isClient ? "justify-end" : "justify-start"}`}
+                    className={`flex ${
+                      isClient ? "justify-end" : "justify-start"
+                    }`}
                   >
                     <div
                       className={`max-w-[85%] rounded-[1.5rem] p-5 ${
                         isClient
-                          ? "bg-[#008B7A] text-white"
-                          : "bg-[#F7FAF8] text-[#0B1736]"
+                          ? "bg-brand-accent text-white"
+                          : "bg-surface text-ink"
                       }`}
                     >
                       <div className="mb-2 flex items-center justify-between gap-4">
@@ -116,9 +113,9 @@ export default function ClientMessagesPage() {
                 );
               })}
             </div>
-          </div>
+          </Card>
 
-          <div className="rounded-[2rem] border border-slate-100 bg-white p-7 shadow-xl shadow-slate-900/5">
+          <Card>
             <h2 className="mb-5 text-2xl font-bold">Nuevo mensaje</h2>
 
             <form className="space-y-5">
@@ -127,7 +124,7 @@ export default function ClientMessagesPage() {
                   Asunto
                 </label>
 
-                <select className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]">
+                <select className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent">
                   <option>Duda sobre documentación</option>
                   <option>Duda sobre estado de la operación</option>
                   <option>Duda sobre oferta bancaria</option>
@@ -143,26 +140,24 @@ export default function ClientMessagesPage() {
                 <textarea
                   rows={7}
                   placeholder="Escribe aquí tu mensaje para el asesor..."
-                  className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                  className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
                 />
               </div>
 
-              <div className="rounded-3xl bg-[#F7FAF8] p-5">
-                <p className="font-bold text-[#073F3A]">Demo visual</p>
+              <div className="rounded-3xl bg-surface p-5">
+                <p className="font-bold text-brand-deep">Comunicación directa</p>
                 <p className="mt-2 leading-7 text-slate-600">
-                  Más adelante conectaremos esta pantalla con Supabase para
-                  guardar mensajes reales y avisar al asesor.
+                  Esta versión es una demostración funcional del flujo. En la
+                  versión final, los mensajes llegarán a tu asesor y quedarán
+                  registrados en tu operación.
                 </p>
               </div>
 
-              <a
-                href="/client/operations/1"
-                className="block w-full rounded-full bg-[#008B7A] px-6 py-3 text-center font-bold text-white transition hover:bg-[#073F3A]"
-              >
-                Enviar mensaje demo
-              </a>
+              <Button href="/client/operations/1" fullWidth>
+                Enviar mensaje
+              </Button>
             </form>
-          </div>
+          </Card>
         </div>
       </section>
     </main>
