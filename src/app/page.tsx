@@ -35,9 +35,17 @@ export default function Home() {
             </Link>
           </nav>
 
-          <Button href="/login" size="sm" className="hidden sm:inline-flex">
-            Acceder
-          </Button>
+          <div className="flex items-center gap-3 sm:gap-4">
+            <Link
+              href="/login"
+              className="hidden text-sm font-semibold text-brand-deep transition hover:text-brand-accent sm:inline"
+            >
+              Acceder
+            </Link>
+            <Button href="/signup" size="sm">
+              Crear cuenta
+            </Button>
+          </div>
         </header>
 
         <div
@@ -74,6 +82,16 @@ export default function Home() {
                   Panel Fixers
                 </Button>
               </div>
+
+              <p className="mt-4 text-sm text-white/70">
+                ¿Aún no tienes acceso?{" "}
+                <Link
+                  href="/signup"
+                  className="font-bold text-brand-light hover:underline"
+                >
+                  Crea tu cuenta
+                </Link>
+              </p>
 
               <div className="mt-12 grid max-w-xl grid-cols-3 gap-4">
                 <div>
