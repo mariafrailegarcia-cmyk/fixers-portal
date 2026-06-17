@@ -40,59 +40,62 @@ export default function Home() {
           </Button>
         </header>
 
-        <div className="grid flex-1 items-center gap-14 py-16 md:grid-cols-[1fr_0.9fr]">
-          <div>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#dce8e3] bg-white px-4 py-2 text-sm font-semibold text-brand-accent shadow-sm">
-              <span className="h-2 w-2 rounded-full bg-brand-light" />
-              Portal privado de seguimiento hipotecario
-            </div>
+        <div
+          id="proceso"
+          className="relative my-10 overflow-hidden rounded-[2.5rem] bg-brand-deep px-6 py-12 text-white sm:px-10 md:my-12 md:py-16"
+        >
+          <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-brand/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 -left-10 h-72 w-72 rounded-full bg-brand-light/10 blur-3xl" />
 
-            <h1 className="mb-6 max-w-3xl text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
-              Tu hipoteca, clara de principio a firma.
-            </h1>
-
-            <p className="mb-9 max-w-2xl text-lg leading-8 text-slate-600">
-              Un espacio privado para que cada cliente pueda consultar el estado
-              de su operación, revisar documentos pendientes, recibir
-              actualizaciones de su asesor y conocer los próximos pasos sin
-              llamadas innecesarias.
-            </p>
-
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <Button href="/client/dashboard" size="lg">
-                Entrar como cliente
-              </Button>
-
-              <Button href="/admin/dashboard" variant="ghost" size="lg">
-                Panel Fixers
-              </Button>
-            </div>
-
-            <div className="mt-12 grid max-w-xl grid-cols-3 gap-4">
-              <div>
-                <p className="text-3xl font-bold text-brand-accent">24/7</p>
-                <p className="mt-1 text-sm text-slate-500">
-                  Consulta del estado
-                </p>
+          <div className="relative grid items-center gap-12 md:grid-cols-[1fr_0.9fr]">
+            <div>
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+                <span className="h-2 w-2 rounded-full bg-brand-light" />
+                Portal privado de seguimiento hipotecario
               </div>
 
-              <div>
-                <p className="text-3xl font-bold text-brand-accent">100%</p>
-                <p className="mt-1 text-sm text-slate-500">Proceso trazable</p>
+              <h1 className="mb-6 max-w-3xl text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+                Tu hipoteca, clara de principio a firma.
+              </h1>
+
+              <p className="mb-9 max-w-2xl text-lg leading-8 text-white/80">
+                Un espacio privado para que cada cliente pueda consultar el
+                estado de su operación, revisar documentos pendientes, recibir
+                actualizaciones de su asesor y conocer los próximos pasos sin
+                llamadas innecesarias.
+              </p>
+
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Button href="/client/dashboard" size="lg">
+                  Entrar como cliente
+                </Button>
+
+                <Button href="/admin/dashboard" variant="light" size="lg">
+                  Panel Fixers
+                </Button>
               </div>
 
-              <div>
-                <p className="text-3xl font-bold text-brand-accent">1</p>
-                <p className="mt-1 text-sm text-slate-500">Portal para todo</p>
+              <div className="mt-12 grid max-w-xl grid-cols-3 gap-4">
+                <div>
+                  <p className="text-3xl font-bold text-brand-light">24/7</p>
+                  <p className="mt-1 text-sm text-white/60">
+                    Consulta del estado
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-3xl font-bold text-brand-light">100%</p>
+                  <p className="mt-1 text-sm text-white/60">Proceso trazable</p>
+                </div>
+
+                <div>
+                  <p className="text-3xl font-bold text-brand-light">1</p>
+                  <p className="mt-1 text-sm text-white/60">Portal para todo</p>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="relative" id="proceso">
-            <div className="absolute -left-8 -top-8 h-28 w-28 rounded-full bg-brand-light/20 blur-2xl" />
-            <div className="absolute -bottom-8 -right-8 h-36 w-36 rounded-full bg-brand-accent/20 blur-2xl" />
-
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/80 bg-white p-7 shadow-2xl shadow-slate-900/10">
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/80 bg-white p-7 text-ink shadow-2xl shadow-black/30">
               <div className="mb-7 flex items-start justify-between gap-4">
                 <div>
                   <p className="mb-1 text-sm font-semibold text-brand-accent">
