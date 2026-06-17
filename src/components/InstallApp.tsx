@@ -29,14 +29,15 @@ export default function InstallApp() {
     }
 
     const ua = window.navigator.userAgent.toLowerCase();
-    if (/iphone|ipad|ipod/.test(ua)) {
-      // Detección solo en cliente tras el montaje (evita desajustes de
-      // hidratación entre servidor y navegador).
-      /* eslint-disable react-hooks/set-state-in-effect */
-      setIsIOS(true);
-      setVisible(true);
-      /* eslint-enable react-hooks/set-state-in-effect */
-    }
+    const ios = /iphone|ipad|ipod/.test(ua);
+    // Mostramos el botón siempre (salvo que ya esté instalada o se cierre).
+    // En Android/escritorio se actualizará a instalación nativa cuando llegue
+    // beforeinstallprompt; en el resto, el botón explica cómo instalar.
+    // Detección solo en cliente tras el montaje (evita desajustes de hidratación).
+    /* eslint-disable react-hooks/set-state-in-effect */
+    setIsIOS(ios);
+    setVisible(true);
+    /* eslint-enable react-hooks/set-state-in-effect */
 
     const onPrompt = (event: Event) => {
       event.preventDefault();
