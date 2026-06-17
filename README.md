@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fixers Portal
 
-## Getting Started
+Portal privado de **Fixers Finance** (bróker hipotecario). Permite a los clientes
+seguir el progreso de su operación hipotecaria y al equipo interno gestionar
+operaciones, documentación, mensajes y ofertas.
 
-First, run the development server:
+> Esta versión es una demostración funcional del flujo. Los datos son estáticos y
+> todavía no hay conexión con base de datos ni CRM.
+
+## Stack
+
+- [Next.js 16](https://nextjs.org) (App Router)
+- [React 19](https://react.dev)
+- [Tailwind CSS 4](https://tailwindcss.com)
+- TypeScript
+
+## Desarrollo
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # build de producción
+npm run lint    # ESLint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Estructura
 
-## Learn More
+- `src/app` — rutas (área pública, portal cliente y panel interno).
+- `src/components` — componentes reutilizables: `Logo`, `Header`, `Button`,
+  `Card`, `Badge`, `ProgressBar`, `Timeline`.
+- `src/app/globals.css` — paleta de marca Fixers como tokens de Tailwind
+  (`brand`, `brand-accent`, `brand-deep`, `surface`, `ink`…).
 
-To learn more about Next.js, take a look at the following resources:
+## Rutas principales
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Ruta | Descripción |
+| --- | --- |
+| `/` | Página de inicio |
+| `/login` | Acceso privado |
+| `/client/dashboard` | Área del cliente |
+| `/client/operations/[id]` | Detalle de la operación (cliente) |
+| `/client/operations/[id]/documents` | Documentación |
+| `/client/operations/[id]/messages` | Mensajes con el asesor |
+| `/client/operations/[id]/offers` | Comparativa de ofertas |
+| `/admin/dashboard` | Panel interno |
+| `/admin/operations/[id]` | Ficha interna de operación |
+| `/admin/operations/[id]/offers` | Gestión de ofertas |
+| `/admin/operations/new` | Alta de operación |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Despliegue
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Listo para desplegar en [Vercel](https://vercel.com/new).

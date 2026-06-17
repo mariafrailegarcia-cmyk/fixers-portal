@@ -1,3 +1,8 @@
+import Badge from "@/components/Badge";
+import Button from "@/components/Button";
+import Card from "@/components/Card";
+import Header from "@/components/Header";
+
 const offers = [
   {
     bank: "Entidad A",
@@ -30,28 +35,20 @@ const offers = [
 
 export default function AdminOffersPage() {
   return (
-    <main className="min-h-screen bg-[#F7FAF8] text-[#0B1736]">
+    <main className="min-h-screen bg-surface text-ink">
       <section className="mx-auto max-w-7xl px-6 py-8">
-        <header className="mb-10 flex items-center justify-between">
-          <a href="/admin/dashboard">
-            <img
-              src="/fixers-logo.png"
-              alt="Fixers Finance"
-              className="h-12 w-auto"
-            />
-          </a>
-
-          <a
-            href="/admin/operations/1"
-            className="rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-bold text-[#073F3A] transition hover:border-[#008B7A] hover:text-[#008B7A]"
-          >
-            Volver a la operación
-          </a>
-        </header>
+        <Header
+          logoHref="/admin/dashboard"
+          right={
+            <Button href="/admin/operations/1" variant="ghost" size="sm">
+              Volver a la operación
+            </Button>
+          }
+        />
 
         <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
-            <p className="mb-2 text-sm font-bold uppercase tracking-wide text-[#008B7A]">
+            <p className="mb-2 text-sm font-bold uppercase tracking-wide text-brand-accent">
               Ofertas bancarias
             </p>
 
@@ -65,13 +62,11 @@ export default function AdminOffersPage() {
             </p>
           </div>
 
-          <span className="w-fit rounded-full bg-[#E9FFF6] px-5 py-3 text-sm font-bold text-[#008B7A]">
-            2 visibles para cliente
-          </span>
+          <Badge size="lg">2 visibles para cliente</Badge>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr]">
-          <div className="rounded-[2rem] bg-white p-7 shadow-xl shadow-slate-900/5">
+          <Card>
             <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-center">
               <div>
                 <h2 className="text-2xl font-bold">Ofertas registradas</h2>
@@ -80,12 +75,13 @@ export default function AdminOffersPage() {
                 </p>
               </div>
 
-              <a
+              <Button
                 href="/client/operations/1/offers"
-                className="rounded-full border border-[#008B7A] px-5 py-2 text-sm font-bold text-[#008B7A] transition hover:bg-[#008B7A] hover:text-white"
+                variant="outline"
+                size="sm"
               >
                 Ver como cliente
-              </a>
+              </Button>
             </div>
 
             <div className="space-y-5">
@@ -94,13 +90,13 @@ export default function AdminOffersPage() {
                   key={offer.bank}
                   className={`rounded-3xl border p-5 ${
                     offer.recommended
-                      ? "border-[#008B7A] bg-[#F7FAF8]"
+                      ? "border-brand-accent bg-surface"
                       : "border-slate-100 bg-white"
                   }`}
                 >
                   <div className="mb-5 flex flex-col justify-between gap-4 md:flex-row md:items-start">
                     <div>
-                      <p className="text-sm font-bold text-[#008B7A]">
+                      <p className="text-sm font-bold text-brand-accent">
                         {offer.bank}
                       </p>
                       <h3 className="mt-1 text-2xl font-bold">{offer.type}</h3>
@@ -108,20 +104,18 @@ export default function AdminOffersPage() {
 
                     <div className="flex flex-wrap gap-2">
                       {offer.recommended && (
-                        <span className="rounded-full bg-[#008B7A] px-3 py-1 text-xs font-bold text-white">
-                          Recomendada
-                        </span>
+                        <Badge variant="solid">Recomendada</Badge>
                       )}
 
-                      <span
-                        className={`rounded-full px-3 py-1 text-xs font-bold ${
+                      <Badge
+                        variant={
                           offer.status === "Visible para cliente"
-                            ? "bg-[#E9FFF6] text-[#008B7A]"
-                            : "bg-slate-100 text-slate-500"
-                        }`}
+                            ? "success"
+                            : "neutral"
+                        }
                       >
                         {offer.status}
-                      </span>
+                      </Badge>
                     </div>
                   </div>
 
@@ -138,15 +132,13 @@ export default function AdminOffersPage() {
 
                     <div className="rounded-2xl bg-white p-4">
                       <p className="text-sm font-bold text-slate-500">Cuota</p>
-                      <p className="mt-1 text-lg font-bold text-[#008B7A]">
+                      <p className="mt-1 text-lg font-bold text-brand-accent">
                         {offer.monthly}
                       </p>
                     </div>
 
                     <div className="rounded-2xl bg-white p-4">
-                      <p className="text-sm font-bold text-slate-500">
-                        Cliente
-                      </p>
+                      <p className="text-sm font-bold text-slate-500">Cliente</p>
                       <p className="mt-1 text-lg font-bold">
                         {offer.status === "Visible para cliente" ? "Sí" : "No"}
                       </p>
@@ -154,24 +146,33 @@ export default function AdminOffersPage() {
                   </div>
 
                   <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                    <button className="rounded-full border border-slate-200 px-5 py-2 text-sm font-bold transition hover:border-[#008B7A] hover:text-[#008B7A]">
+                    <button
+                      type="button"
+                      className="rounded-full border border-slate-200 px-5 py-2 text-sm font-bold transition hover:border-brand-accent hover:text-brand-accent"
+                    >
                       Editar
                     </button>
 
-                    <button className="rounded-full border border-slate-200 px-5 py-2 text-sm font-bold transition hover:border-[#008B7A] hover:text-[#008B7A]">
+                    <button
+                      type="button"
+                      className="rounded-full border border-slate-200 px-5 py-2 text-sm font-bold transition hover:border-brand-accent hover:text-brand-accent"
+                    >
                       Marcar como recomendada
                     </button>
 
-                    <button className="rounded-full border border-slate-200 px-5 py-2 text-sm font-bold transition hover:border-[#008B7A] hover:text-[#008B7A]">
+                    <button
+                      type="button"
+                      className="rounded-full border border-slate-200 px-5 py-2 text-sm font-bold transition hover:border-brand-accent hover:text-brand-accent"
+                    >
                       Cambiar visibilidad
                     </button>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </Card>
 
-          <div className="rounded-[2rem] bg-white p-7 shadow-xl shadow-slate-900/5">
+          <Card>
             <h2 className="mb-6 text-2xl font-bold">Añadir nueva oferta</h2>
 
             <form className="space-y-5">
@@ -181,7 +182,7 @@ export default function AdminOffersPage() {
                 </label>
                 <input
                   placeholder="Nombre del banco"
-                  className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                  className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
                 />
               </div>
 
@@ -189,7 +190,7 @@ export default function AdminOffersPage() {
                 <label className="mb-2 block text-sm font-bold text-slate-700">
                   Tipo de hipoteca
                 </label>
-                <select className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]">
+                <select className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent">
                   <option>Hipoteca fija</option>
                   <option>Hipoteca mixta</option>
                   <option>Hipoteca variable</option>
@@ -203,7 +204,7 @@ export default function AdminOffersPage() {
                   </label>
                   <input
                     placeholder="2,75%"
-                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
                   />
                 </div>
 
@@ -213,7 +214,7 @@ export default function AdminOffersPage() {
                   </label>
                   <input
                     placeholder="3,05%"
-                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
                   />
                 </div>
               </div>
@@ -224,7 +225,7 @@ export default function AdminOffersPage() {
                 </label>
                 <input
                   placeholder="980 €"
-                  className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                  className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
                 />
               </div>
 
@@ -235,15 +236,15 @@ export default function AdminOffersPage() {
                 <textarea
                   rows={4}
                   placeholder="Notas internas sobre vinculaciones, comisiones o condiciones."
-                  className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                  className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
                 />
               </div>
 
-              <div className="rounded-3xl bg-[#F7FAF8] p-5">
+              <div className="rounded-3xl bg-surface p-5">
                 <label className="flex items-start gap-3">
                   <input type="checkbox" className="mt-1 h-4 w-4" />
                   <span>
-                    <span className="block font-bold text-[#073F3A]">
+                    <span className="block font-bold text-brand-deep">
                       Visible para cliente
                     </span>
                     <span className="mt-1 block text-sm leading-6 text-slate-600">
@@ -254,14 +255,11 @@ export default function AdminOffersPage() {
                 </label>
               </div>
 
-              <a
-                href="/admin/operations/1/offers"
-                className="block w-full rounded-full bg-[#008B7A] px-6 py-3 text-center font-bold text-white transition hover:bg-[#073F3A]"
-              >
-                Añadir oferta demo
-              </a>
+              <Button href="/admin/operations/1/offers" fullWidth>
+                Añadir oferta
+              </Button>
             </form>
-          </div>
+          </Card>
         </div>
       </section>
     </main>

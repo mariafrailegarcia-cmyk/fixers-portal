@@ -1,3 +1,8 @@
+import Badge from "@/components/Badge";
+import Button from "@/components/Button";
+import Card from "@/components/Card";
+import Header from "@/components/Header";
+
 const stats = [
   { label: "Operaciones activas", value: "18" },
   { label: "Pendientes de documentos", value: "7" },
@@ -38,35 +43,27 @@ const operations = [
 
 export default function AdminDashboard() {
   return (
-    <main className="min-h-screen bg-[#F7FAF8] text-[#0B1736]">
+    <main className="min-h-screen bg-surface text-ink">
       <section className="mx-auto max-w-7xl px-6 py-8">
-        <header className="mb-10 flex items-center justify-between">
-          <a href="/">
-            <img
-              src="/fixers-logo.png"
-              alt="Fixers Finance"
-              className="h-12 w-auto"
-            />
-          </a>
+        <Header
+          logoHref="/"
+          right={
+            <>
+              <div className="hidden text-right sm:block">
+                <p className="text-sm font-bold">Equipo Fixers</p>
+                <p className="text-xs text-slate-500">Panel interno</p>
+              </div>
 
-          <div className="flex items-center gap-3">
-            <div className="hidden text-right sm:block">
-              <p className="text-sm font-bold">Equipo Fixers</p>
-              <p className="text-xs text-slate-500">Panel interno</p>
-            </div>
-
-            <a
-              href="/"
-              className="rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-bold text-[#073F3A] transition hover:border-[#008B7A] hover:text-[#008B7A]"
-            >
-              Salir
-            </a>
-          </div>
-        </header>
+              <Button href="/" variant="ghost" size="sm">
+                Salir
+              </Button>
+            </>
+          }
+        />
 
         <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
-            <p className="mb-2 text-sm font-bold uppercase tracking-wide text-[#008B7A]">
+            <p className="mb-2 text-sm font-bold uppercase tracking-wide text-brand-accent">
               Panel Fixers
             </p>
             <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
@@ -78,22 +75,17 @@ export default function AdminDashboard() {
             </p>
           </div>
 
-          <a
-            href="/admin/operations/new"
-            className="rounded-full bg-[#008B7A] px-6 py-3 font-bold text-white shadow-lg shadow-emerald-900/10 transition hover:bg-[#073F3A]"
-          >
-            Nueva operación
-          </a>
+          <Button href="/admin/operations/new">Nueva operación</Button>
         </div>
 
-        <div className="mb-6 grid gap-5 md:grid-cols-4">
+        <div className="mb-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat) => (
             <div
               key={stat.label}
               className="rounded-3xl bg-white p-6 shadow-xl shadow-slate-900/5"
             >
               <p className="text-sm font-bold text-slate-500">{stat.label}</p>
-              <p className="mt-3 text-4xl font-bold text-[#008B7A]">
+              <p className="mt-3 text-4xl font-bold text-brand-accent">
                 {stat.value}
               </p>
             </div>
@@ -109,9 +101,7 @@ export default function AdminDashboard() {
               </p>
             </div>
 
-            <div className="rounded-full bg-[#E9FFF6] px-4 py-2 text-sm font-bold text-[#008B7A]">
-              Actualizado hoy
-            </div>
+            <Badge size="md">Actualizado hoy</Badge>
           </div>
 
           <div className="divide-y divide-slate-100">
@@ -131,9 +121,7 @@ export default function AdminDashboard() {
                 </div>
 
                 <div>
-                  <span className="rounded-full bg-[#E9FFF6] px-3 py-1 text-sm font-bold text-[#008B7A]">
-                    {item.status}
-                  </span>
+                  <Badge>{item.status}</Badge>
                 </div>
 
                 <div>
@@ -141,21 +129,24 @@ export default function AdminDashboard() {
                   <p className="text-sm text-slate-500">Asesor</p>
                 </div>
 
-                <div className="font-bold text-[#008B7A]">{item.progress}</div>
+                <div className="font-bold text-brand-accent">
+                  {item.progress}
+                </div>
 
-                <a
+                <Button
                   href="/admin/operations/1"
-                  className="rounded-full border border-slate-200 px-4 py-2 text-center text-sm font-bold transition hover:border-[#008B7A] hover:text-[#008B7A]"
+                  variant="ghost"
+                  size="sm"
                 >
                   Abrir
-                </a>
+                </Button>
               </div>
             ))}
           </div>
         </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-[2rem] bg-white p-7 shadow-xl shadow-slate-900/5">
+          <Card>
             <h3 className="mb-5 text-xl font-bold">Tareas pendientes</h3>
 
             <div className="space-y-4">
@@ -166,16 +157,16 @@ export default function AdminDashboard() {
               ].map((task) => (
                 <div
                   key={task}
-                  className="rounded-2xl bg-[#F7FAF8] p-4 font-semibold"
+                  className="rounded-2xl bg-surface p-4 font-semibold"
                 >
                   {task}
                 </div>
               ))}
             </div>
-          </div>
+          </Card>
 
-          <div className="rounded-[2rem] bg-[#073F3A] p-7 text-white shadow-xl shadow-slate-900/5">
-            <p className="text-sm font-bold text-[#18C98B]">
+          <Card tone="dark">
+            <p className="text-sm font-bold text-brand-light">
               Recordatorio interno
             </p>
             <h3 className="mt-3 text-2xl font-bold">
@@ -186,7 +177,7 @@ export default function AdminDashboard() {
               El cliente únicamente debe ver actualizaciones claras, revisadas y
               marcadas como visibles.
             </p>
-          </div>
+          </Card>
         </div>
       </section>
     </main>

@@ -1,3 +1,8 @@
+import Badge from "@/components/Badge";
+import Button from "@/components/Button";
+import Card from "@/components/Card";
+import Header from "@/components/Header";
+
 const requiredDocuments = [
   {
     name: "DNI / NIE",
@@ -23,27 +28,19 @@ const requiredDocuments = [
 
 export default function ClientDocumentsPage() {
   return (
-    <main className="min-h-screen bg-white text-[#0B1736]">
+    <main className="min-h-screen bg-white text-ink">
       <section className="mx-auto max-w-6xl px-6 py-8">
-        <header className="mb-10 flex items-center justify-between">
-          <a href="/client/dashboard">
-            <img
-              src="/fixers-logo.png"
-              alt="Fixers Finance"
-              className="h-12 w-auto"
-            />
-          </a>
+        <Header
+          logoHref="/client/dashboard"
+          right={
+            <Button href="/client/operations/1" variant="ghost" size="sm">
+              Volver a la operación
+            </Button>
+          }
+        />
 
-          <a
-            href="/client/operations/1"
-            className="rounded-full border border-slate-200 px-5 py-2 text-sm font-bold text-[#073F3A] transition hover:border-[#008B7A] hover:text-[#008B7A]"
-          >
-            Volver a la operación
-          </a>
-        </header>
-
-        <div className="mb-8 rounded-[2rem] bg-[#F7FAF8] p-8">
-          <p className="mb-2 text-sm font-bold uppercase tracking-wide text-[#008B7A]">
+        <div className="mb-8 rounded-[2rem] bg-surface p-8">
+          <p className="mb-2 text-sm font-bold uppercase tracking-wide text-brand-accent">
             Documentación
           </p>
 
@@ -58,7 +55,7 @@ export default function ClientDocumentsPage() {
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-[2rem] border border-slate-100 bg-white p-7 shadow-xl shadow-slate-900/5">
+          <Card>
             <h2 className="mb-6 text-2xl font-bold">Documentos solicitados</h2>
 
             <div className="space-y-4">
@@ -69,16 +66,11 @@ export default function ClientDocumentsPage() {
                 >
                   <div className="mb-2 flex items-center justify-between gap-4">
                     <p className="font-bold">{doc.name}</p>
-
-                    <span
-                      className={`rounded-full px-3 py-1 text-xs font-bold ${
-                        doc.status === "Recibido"
-                          ? "bg-[#E9FFF6] text-[#008B7A]"
-                          : "bg-amber-100 text-amber-700"
-                      }`}
+                    <Badge
+                      variant={doc.status === "Recibido" ? "success" : "warning"}
                     >
                       {doc.status}
-                    </span>
+                    </Badge>
                   </div>
 
                   <p className="text-sm leading-6 text-slate-500">
@@ -87,9 +79,9 @@ export default function ClientDocumentsPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </Card>
 
-          <div className="rounded-[2rem] border border-slate-100 bg-white p-7 shadow-xl shadow-slate-900/5">
+          <Card>
             <h2 className="mb-6 text-2xl font-bold">Subir nuevo documento</h2>
 
             <form className="space-y-5">
@@ -98,7 +90,7 @@ export default function ClientDocumentsPage() {
                   Tipo de documento
                 </label>
 
-                <select className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]">
+                <select className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent">
                   <option>Últimas 3 nóminas</option>
                   <option>Declaración de la renta</option>
                   <option>Contrato de arras</option>
@@ -111,8 +103,8 @@ export default function ClientDocumentsPage() {
                   Archivo
                 </label>
 
-                <div className="rounded-[2rem] border-2 border-dashed border-slate-200 bg-[#F7FAF8] p-8 text-center">
-                  <p className="text-lg font-bold text-[#073F3A]">
+                <div className="rounded-[2rem] border-2 border-dashed border-slate-200 bg-surface p-8 text-center">
+                  <p className="text-lg font-bold text-brand-deep">
                     Arrastra aquí tu archivo
                   </p>
                   <p className="mt-2 text-sm text-slate-500">
@@ -134,26 +126,26 @@ export default function ClientDocumentsPage() {
                 <textarea
                   rows={4}
                   placeholder="Puedes añadir una aclaración para tu asesor."
-                  className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                  className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
                 />
               </div>
 
-              <div className="rounded-3xl bg-[#F7FAF8] p-5">
-                <p className="font-bold text-[#073F3A]">Demo visual</p>
+              <div className="rounded-3xl bg-surface p-5">
+                <p className="font-bold text-brand-deep">
+                  Subida segura de documentos
+                </p>
                 <p className="mt-2 leading-7 text-slate-600">
-                  Más adelante conectaremos esta pantalla con Supabase Storage
-                  para guardar archivos reales de forma segura.
+                  Esta versión es una demostración funcional del flujo. En la
+                  versión final, los archivos se guardarán de forma segura y solo
+                  serán visibles para tu asesor.
                 </p>
               </div>
 
-              <a
-                href="/client/operations/1"
-                className="block w-full rounded-full bg-[#008B7A] px-6 py-3 text-center font-bold text-white transition hover:bg-[#073F3A]"
-              >
-                Subir documento demo
-              </a>
+              <Button href="/client/operations/1" fullWidth>
+                Subir documento
+              </Button>
             </form>
-          </div>
+          </Card>
         </div>
       </section>
     </main>

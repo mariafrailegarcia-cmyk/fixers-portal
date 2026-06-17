@@ -1,3 +1,8 @@
+import Badge from "@/components/Badge";
+import Button from "@/components/Button";
+import Card from "@/components/Card";
+import Header from "@/components/Header";
+
 const offers = [
   {
     entity: "Entidad A",
@@ -33,27 +38,19 @@ const offers = [
 
 export default function ClientOffersPage() {
   return (
-    <main className="min-h-screen bg-white text-[#0B1736]">
+    <main className="min-h-screen bg-white text-ink">
       <section className="mx-auto max-w-7xl px-6 py-8">
-        <header className="mb-10 flex items-center justify-between">
-          <a href="/client/dashboard">
-            <img
-              src="/fixers-logo.png"
-              alt="Fixers Finance"
-              className="h-12 w-auto"
-            />
-          </a>
+        <Header
+          logoHref="/client/dashboard"
+          right={
+            <Button href="/client/operations/1" variant="ghost" size="sm">
+              Volver a la operación
+            </Button>
+          }
+        />
 
-          <a
-            href="/client/operations/1"
-            className="rounded-full border border-slate-200 px-5 py-2 text-sm font-bold text-[#073F3A] transition hover:border-[#008B7A] hover:text-[#008B7A]"
-          >
-            Volver a la operación
-          </a>
-        </header>
-
-        <div className="mb-8 rounded-[2rem] bg-[#F7FAF8] p-8">
-          <p className="mb-2 text-sm font-bold uppercase tracking-wide text-[#008B7A]">
+        <div className="mb-8 rounded-[2rem] bg-surface p-8">
+          <p className="mb-2 text-sm font-bold uppercase tracking-wide text-brand-accent">
             Ofertas hipotecarias
           </p>
 
@@ -69,14 +66,12 @@ export default function ClientOffersPage() {
               </p>
             </div>
 
-            <span className="w-fit rounded-full bg-[#E9FFF6] px-5 py-3 text-sm font-bold text-[#008B7A]">
-              3 ofertas disponibles
-            </span>
+            <Badge size="lg">3 ofertas disponibles</Badge>
           </div>
         </div>
 
-        <div className="mb-6 rounded-[2rem] bg-[#073F3A] p-7 text-white">
-          <p className="text-sm font-bold text-[#18C98B]">
+        <Card tone="dark" className="mb-6">
+          <p className="text-sm font-bold text-brand-light">
             Recomendación del asesor
           </p>
           <p className="mt-3 text-xl font-semibold leading-8">
@@ -84,7 +79,7 @@ export default function ClientOffersPage() {
             estabilidad, cuota y condiciones generales. Aun así, estamos revisando
             si podemos mejorar alguna vinculación.
           </p>
-        </div>
+        </Card>
 
         <div className="grid gap-6 lg:grid-cols-3">
           {offers.map((offer) => (
@@ -92,27 +87,21 @@ export default function ClientOffersPage() {
               key={offer.entity}
               className={`rounded-[2rem] border p-7 shadow-xl shadow-slate-900/5 ${
                 offer.highlight
-                  ? "border-[#008B7A] bg-[#F7FAF8]"
+                  ? "border-brand-accent bg-surface"
                   : "border-slate-100 bg-white"
               }`}
             >
               <div className="mb-6 flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-sm font-bold text-[#008B7A]">
+                  <p className="text-sm font-bold text-brand-accent">
                     {offer.entity}
                   </p>
                   <h2 className="mt-1 text-2xl font-bold">{offer.type}</h2>
                 </div>
 
-                <span
-                  className={`rounded-full px-3 py-1 text-xs font-bold ${
-                    offer.highlight
-                      ? "bg-[#008B7A] text-white"
-                      : "bg-[#E9FFF6] text-[#008B7A]"
-                  }`}
-                >
+                <Badge variant={offer.highlight ? "solid" : "success"}>
                   {offer.status}
-                </span>
+                </Badge>
               </div>
 
               <div className="space-y-4">
@@ -130,7 +119,7 @@ export default function ClientOffersPage() {
                   <p className="text-sm font-bold text-slate-500">
                     Cuota estimada
                   </p>
-                  <p className="mt-1 text-xl font-bold text-[#008B7A]">
+                  <p className="mt-1 text-xl font-bold text-brand-accent">
                     {offer.monthly}
                   </p>
                 </div>
@@ -141,22 +130,23 @@ export default function ClientOffersPage() {
                 </div>
               </div>
 
-              <button className="mt-6 w-full rounded-full border border-[#008B7A] px-6 py-3 font-bold text-[#008B7A] transition hover:bg-[#008B7A] hover:text-white">
+              <Button variant="outline" fullWidth className="mt-6">
                 Ver detalle
-              </button>
+              </Button>
             </div>
           ))}
         </div>
 
-        <div className="mt-6 rounded-[2rem] border border-slate-100 bg-white p-7 shadow-xl shadow-slate-900/5">
-          <h2 className="mb-4 text-2xl font-bold">Aviso importante</h2>
+        <Card className="mt-6">
+          <h2 className="mb-4 text-2xl font-bold">Cómo leer esta comparativa</h2>
           <p className="leading-7 text-slate-600">
-            Esta pantalla es una demo visual. En la versión real, las ofertas
-            deberían estar revisadas por el equipo Fixers antes de mostrarse al
-            cliente y podrían incluir documentos como FEIN, vinculaciones,
-            comisiones y observaciones internas no visibles.
+            Cada oferta ha sido seleccionada y revisada por tu asesor Fixers
+            antes de mostrarse aquí. Las condiciones definitivas (FEIN,
+            vinculaciones y comisiones) se confirmarán con la entidad antes de la
+            firma. Si tienes dudas, puedes escribir a tu asesor en cualquier
+            momento.
           </p>
-        </div>
+        </Card>
       </section>
     </main>
   );

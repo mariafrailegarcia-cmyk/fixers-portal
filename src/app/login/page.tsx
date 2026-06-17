@@ -1,17 +1,15 @@
+import Link from "next/link";
+import Button from "@/components/Button";
+import Logo from "@/components/Logo";
+
 export default function LoginPage() {
   return (
-    <main className="min-h-screen bg-white text-[#0B1736]">
+    <main className="min-h-screen bg-white text-ink">
       <section className="mx-auto grid min-h-screen max-w-7xl px-6 py-8 lg:grid-cols-2 lg:items-center lg:gap-16">
         <div>
-          <a href="/">
-            <img
-              src="/fixers-logo.png"
-              alt="Fixers Finance"
-              className="mb-12 h-14 w-auto"
-            />
-          </a>
+          <Logo href="/" height={48} priority className="mb-12" />
 
-          <p className="mb-3 text-sm font-bold uppercase tracking-wide text-[#008B7A]">
+          <p className="mb-3 text-sm font-bold uppercase tracking-wide text-brand-accent">
             Acceso privado
           </p>
 
@@ -20,17 +18,16 @@ export default function LoginPage() {
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
-            Consulta el estado de tu operación, revisa la documentación pendiente
-            y sigue cada paso hasta la firma con el equipo Fixers.
+            Consulta el estado de tu operación, revisa la documentación
+            pendiente y sigue cada paso hasta la firma con el equipo Fixers.
           </p>
 
-          <div className="mt-10 rounded-[2rem] bg-[#F7FAF8] p-6">
-            <p className="font-bold text-[#073F3A]">
-              Demo visual
-            </p>
+          <div className="mt-10 rounded-[2rem] bg-surface p-6">
+            <p className="font-bold text-brand-deep">Acceso seguro</p>
             <p className="mt-2 leading-7 text-slate-600">
-              En la versión real, esta pantalla se conectará con Supabase para
-              validar email, contraseña y permisos de cada usuario.
+              Esta versión es una demostración funcional del flujo. En la versión
+              final, el acceso validará email, contraseña y permisos de cada
+              usuario de forma segura.
             </p>
           </div>
         </div>
@@ -49,7 +46,7 @@ export default function LoginPage() {
               <input
                 type="email"
                 placeholder="tu@email.com"
-                className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
               />
             </div>
 
@@ -60,33 +57,27 @@ export default function LoginPage() {
               <input
                 type="password"
                 placeholder="••••••••"
-                className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-[#008B7A]"
+                className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-accent"
               />
             </div>
           </form>
 
           <div className="mt-8 space-y-3">
-            <a
-              href="/client/dashboard"
-              className="block w-full rounded-full bg-[#008B7A] px-6 py-3 text-center font-bold text-white transition hover:bg-[#073F3A]"
-            >
+            <Button href="/client/dashboard" fullWidth>
               Entrar como cliente
-            </a>
+            </Button>
 
-            <a
-              href="/admin/dashboard"
-              className="block w-full rounded-full border border-[#008B7A] px-6 py-3 text-center font-bold text-[#008B7A] transition hover:bg-[#008B7A] hover:text-white"
-            >
+            <Button href="/admin/dashboard" variant="outline" fullWidth>
               Entrar como equipo Fixers
-            </a>
+            </Button>
           </div>
 
-          <a
+          <Link
             href="/"
-            className="mt-6 block text-center text-sm font-bold text-slate-500 hover:text-[#008B7A]"
+            className="mt-6 block text-center text-sm font-bold text-slate-500 transition hover:text-brand-accent"
           >
             Volver al inicio
-          </a>
+          </Link>
         </div>
       </section>
     </main>
